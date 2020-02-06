@@ -19,7 +19,6 @@ public class Test {
          * 2.写时，在中间插入，后者比前者性能高很多
          * 3.读时，前者比后者性能高很多
          */
-
         List arrayList = new ArrayList();
         List linkedList = new LinkedList();
 
