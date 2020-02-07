@@ -9,7 +9,6 @@ import java.util.List;
  *
  * 分别用 ArrayList 和 LinkedList 添加10万个元素，对比性能差异
  * 添加之前获取一个当前时间(单位为毫秒)，添加之后获取一个当前时间，用时 = 添加之后 - 添加之前
- *
  * @author ldamei
  * @date 2020/2/6 18:42
  */
