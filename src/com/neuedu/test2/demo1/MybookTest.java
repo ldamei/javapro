@@ -9,40 +9,117 @@ import java.util.Scanner;
  * @date 2020/2/10 15:33
  */
 public class MybookTest {
-    public static void main(String[] args) {
+    public static Mybook[] books = new Mybook[200];
+    public static List<Mybook> list = new ArrayList<>();
 
-        Mybook[] books = new Mybook[200];
-        Mybook mybook = new Mybook("人民的名义",20,"人民日报","李某某","abc");
-        Mybook mybook2 = new Mybook("厚黑学",30,"人民日报","张某某","def");
-        books[0] = mybook;
-        books[1] = mybook2;
-//        inputData();
-//        print();
-        searchName(books,"");
+    public static void main(String[] args) {
+        inputData(list);
+        menu();
     }
 
-    public static void inputData(ArrayList<Mybook> books){
+    // 菜单栏
+    public static void menu(){
+        System.out.println("============");
+        System.out.println("请选择你要进行的操作(请输入数字1-5)：");
+        System.out.println("1.添加图书");
+        System.out.println("2.删除图书");
+        System.out.println("3.查找图书");
+        System.out.println("4.查看所有");
+        System.out.println("5.退出");
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
+        switch (n){
+            case  1:
+                addBook(list);
+                break;
+            case 2:
+                System.out.println("请输入要删除的书名：");
+                String deleteName = scanner.next();
+                deleteName(list,deleteName);
+                break;
+            case 3:
+                System.out.println("请输入要查看的书名：");
+                String searchName = scanner.next();
+                searchName(list,searchName);
+                break;
+            case 4:
+                print(list);
+                break;
+            case 5:
+                System.exit(1);
+                break;
+        }
     }
 
-    public static void print(ArrayList<Mybook> books){
+    // 输入数据
+    public static void inputData(List<Mybook> books){
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        for (int i = 1; i <= n; i++) {
+            Mybook mybook = new Mybook("书名"+i,Double.valueOf(String.valueOf(i)),"出版社"+i,"作者"+i,"ISBN"+i);
+            books.add(mybook);
+        }
+    }
+
+    // 打印书
+    public static void print(List<Mybook> books){
+        System.out.println("============");
         for (int i = 0; i < books.size(); i++) {
             System.out.println(books.get(i));
         }
+        menu();
     }
 
-    public static void searchName(Mybook[] books,String name){
-        Scanner scanner = new Scanner(System.in);
-        String n = scanner.next();
-        for (int i = 0; i < books.length; i++) {
-            List list = (List) books[i];
-            if(n.equals(list.get(i))){
-                System.out.println("shu");
-            }else{
-                System.out.println("此书不存在");
+    // 查找书
+    public static void searchName(List<Mybook> books,String name){
+        for (int i = 0; i < books.size(); i++) {
+            Mybook mybook = books.get(i);
+            if(name.equals(mybook.getName())){
+                System.out.println("============");
+                System.out.println(mybook);
+                menu();
+                return;
             }
         }
+        System.out.println("============");
+        System.out.println("此书不存在");
+        menu();
+    }
 
+    // 删除书
+    public static void deleteName(List<Mybook> books,String name){
+        for (int i = 0; i < books.size(); i++) {
+            Mybook mybook = books.get(i);
+            if(name.equals(mybook.getName())){
+                books.remove(mybook);
+                System.out.println("============");
+                System.out.println("此书删除成功");
+                System.out.println(mybook);
+                menu();
+                return;
+            }
+        }
+        System.out.println("============");
+        System.out.println("没有此书，删除失败");
+        menu();
+    }
+
+    // 添加书
+    public static void addBook(List<Mybook> books){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("============");
+        System.out.println("请输入书名：");
+        String name = scanner.next();
+        System.out.println("请输入价格：");
+        Double price = scanner.nextDouble();
+        System.out.println("请输入出版社：");
+        String press = scanner.next();
+        System.out.println("请输入作者：");
+        String author = scanner.next();
+        System.out.println("请输入ISBN：");
+        String ISBN = scanner.next();
+        Mybook mybook = new Mybook(name,price,press,author,ISBN);
+        books.add(mybook);
+        menu();
     }
 }

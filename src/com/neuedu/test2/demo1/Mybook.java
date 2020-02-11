@@ -11,7 +11,7 @@ public class Mybook {
     private String author;  // 作者
     private String bookISBN;  // ISBN号
 
-   /* public String getName() {
+    public String getName() {
         return name;
     }
 
@@ -47,19 +47,22 @@ public class Mybook {
         return bookISBN;
     }
 
-    public Mybook[] getBooks() {
-        return books;
-    }
-
-    public void setBooks(Mybook[] books) {
-        this.books = books;
-    }
-
     public void setBookISBN(String bookISBN) {
         this.bookISBN = bookISBN;
-    }*/
+    }
 
-    public Mybook(String name, double price,String press,String author,String bookISBN){
+    @Override
+    public String toString() {
+        return "Mybook{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", press='" + press + '\'' +
+                ", author='" + author + '\'' +
+                ", bookISBN='" + bookISBN + '\'' +
+                '}';
+    }
+
+    public Mybook(String name, Double price, String press, String author, String bookISBN){
         this.name = name;
         this.price = price;
         this.press = press;

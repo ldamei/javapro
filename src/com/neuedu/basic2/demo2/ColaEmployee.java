@@ -6,13 +6,13 @@ package com.neuedu.basic2.demo2;
  * @date 2020/2/6 0:26
  */
 public abstract class ColaEmployee {
-    public String name;
-    public int month;
+    private String name;
+    private Integer month;
 
-    public ColaEmployee(String name,int month) {
+    public ColaEmployee(String name,Integer month) {
         this.name = name;
         this.month = month;
     }
 
-    public abstract double getSalary(int month);
+    public abstract Double getSalary(Integer month);
 }

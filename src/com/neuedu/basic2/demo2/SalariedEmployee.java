@@ -6,15 +6,15 @@ package com.neuedu.basic2.demo2;
  * @date 2020/2/6 0:28
  */
 public class SalariedEmployee extends ColaEmployee {
-    private int wage;  // 固定工资
+    private Integer wage;  // 固定工资
 
-    public SalariedEmployee(String name,int wage,int month){
+    public SalariedEmployee(String name,Integer wage,Integer month){
         super(name,month);
         this.wage = wage;
     }
 
     @Override
-    public double getSalary(int month) {
-        return wage;
+    public Double getSalary(Integer month) {
+        return Double.valueOf(wage);
     }
 }

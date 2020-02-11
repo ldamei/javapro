@@ -6,17 +6,17 @@ package com.neuedu.basic2.demo2;
  * @date 2020/2/6 0:30
  */
 public class SalesEmployee extends ColaEmployee{
-    private int msv;  // 月销售额
-    private double rate;  // 提成率
+    private Integer msv;  // 月销售额
+    private Double rate;  // 提成率
 
-    public SalesEmployee(String name,int msv,double rate,int month){
+    public SalesEmployee(String name,Integer msv,Double rate,Integer month){
         super(name,month);
         this.msv = msv;
         this.rate = rate;
     }
 
     @Override
-    public double getSalary(int month) {
+    public Double getSalary(Integer month) {
         return msv*rate;
     }
 }
