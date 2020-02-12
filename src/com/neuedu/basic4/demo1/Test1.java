@@ -14,6 +14,15 @@ public class Test1 {
         boolean b2 = a++ == 7 && b++ >= 18;
         System.out.println(b<<1);*/
 
+       /* int a = 5;
+        System.out.println("a+1="+(a+1));  // 6
+        System.out.println("a++="+(a++));  // 5
+        System.out.println("++a="+(++a));  // 7
+        System.out.println("a-1="+(a-1));  // 6
+        System.out.println("a--="+(a--));  // 7
+        System.out.println("--a="+(--a));  // 5
+        System.out.println("-a="+(-a));  // -5*/
+
         int[] array = new int[10];
         int[] arr1 = new int[5];
         int[] arr2 = new int[5];

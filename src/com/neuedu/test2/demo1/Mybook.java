@@ -1,10 +1,12 @@
 package com.neuedu.test2.demo1;
 
+import java.io.Serializable;
+
 /**
  * @author ldamei
  * @date 2020/2/10 14:45
  */
-public class Mybook {
+public class Mybook implements Serializable{
     private String name;  // 书名
     private Double price;  // 价格
     private String press;  // 出版社
