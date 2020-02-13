@@ -20,14 +20,14 @@ package com.neuedu.test2.demo4;
  */
 public class MyThreadTest {
     public static void main(String[] args) {
-        /*// 1.继承 Thread 类,创建多线程
-        MyThread1 mt1 = new MyThread1();
+        // 1.继承 Thread 类,创建多线程
+        /*MyThread1 mt1 = new MyThread1();
         mt1.start();
         MyThread1 mt11 = new MyThread1();
-        mt11.start();
+        mt11.start();*/
 
         //2.实现 Runnable 接口,创建多线程
-        MyThread2 mt2 = new MyThread2();
+        /*MyThread2 mt2 = new MyThread2();
         Thread t = new Thread(mt2);
         t.start();*/
 
@@ -58,7 +58,7 @@ public class MyThreadTest {
         }));*/
 
         // 匿名内部类
-        /*Thread t = new Thread(new Runnable() {
+       /* Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = 1; i <= 100 ; i++) {
@@ -74,7 +74,7 @@ public class MyThreadTest {
         t.start();*/
 
         // lambda表达式
-        Thread t = new Thread(()-> {
+       /* Thread t = new Thread(()-> {
             for (int i = 1; i <= 100 ; i++) {
                 try {
                     Thread.sleep(1000);
@@ -84,7 +84,7 @@ public class MyThreadTest {
                 System.out.println(Thread.currentThread().getName()+"线程输出："+i);
             }
         });
-        t.start();
+        t.start();*/
     }
 
     public static int method(int a,int b,MyInterface mi){

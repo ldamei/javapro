@@ -35,18 +35,25 @@ public class Test12 {
          * 字节输出流，默认将内容写入到文件中（覆盖源文件）
          * 如果想保留原先的内容，在构造的时候设置为追加内容
          */
-        /*try {
-            OutputStream outputStream = new FileOutputStream(file,true);
+        /*OutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(file,true);
             String a = "\n111111"; // 内存和文件之间架起一条传输管道
             outputStream.write(a.getBytes());  // write：把写的内容发送到管道上
             outputStream.flush();  // flush：把管道里的内容压入到文件里
-            outputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-
+        }finally {
+            try {
+                if (outputStream != null)
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+*/
         /**
          * 字节输入流 InputStream
          */
@@ -78,7 +85,6 @@ public class Test12 {
          * 字符输入流 Reader
          * 实现按行读：BufferedReader
          */
-
         char[] a = new char[8];
         Reader reader = null;
         BufferedReader br = null;
@@ -87,7 +93,7 @@ public class Test12 {
             br = new BufferedReader(reader);
 //            int b = reader.read(a);
             String str = br.readLine();
-            while(/*b != -1*/str != null){
+            while (/*b != -1*/str != null) {
                /* System.out.println("读取字符个数：" +b);
                 System.out.println(new String(a,0,b));
                 b = reader.read(a);*/
@@ -98,12 +104,12 @@ public class Test12 {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
-                if(br != null){
+                if (br != null) {
                     br.close();
                 }
-                if (reader != null){
+                if (reader != null) {
                     reader.close();
                 }
             } catch (IOException e) {
