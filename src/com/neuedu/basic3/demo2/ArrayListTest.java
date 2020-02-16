@@ -18,7 +18,6 @@ public class ArrayListTest {
         list2.add("234");
         list2.add("345");
         list1.addAll(list2);
-
         for (int i = 0; i < list1.size(); i++) {
             System.out.println(list1.get(i));
         }
