@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author ldamei
  * @date 2020/2/10 15:33
  */
-public class MybookTest {
+public class   MybookTest {
     public static Mybook[] books = new Mybook[200];
     public static List<Mybook> list = new ArrayList<>();
     public static File file = new File("d:/books");

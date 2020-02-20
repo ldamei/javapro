@@ -22,7 +22,7 @@ public class Test1 {
             // 1.加载驱动，连哪种数据库就要加载哪种驱动
             Class.forName("com.mysql.jdbc.Driver");
             // 2.创建连接，通过DriverManager类来实现
-            con = DriverManager.getConnection(url,username,password);
+            con = DriverManager.getConnection(url, username, password);
             // 3.jdbc中要操作的库已经包含在url中（省略）
 
             // 4.创建一个可以写sql语句的地方
@@ -31,13 +31,13 @@ public class Test1 {
 
             // 6.如果是增删改查，则用PreparedStatement对象调用 executeUpdate方法，返回int（受影响的行数）
             //   如果是查询，则用PreparedStatement对象调用executeQuery,返回ResultSet对象（结果集）
-            int a = ps.executeUpdate();
-            System.out.println(a);
+//            int a = ps.executeUpdate();
+//            System.out.println(a);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             // 7.对于con和ps来说，都是资源，使用后要进行关闭
             try {
                 if (ps != null)

@@ -22,7 +22,7 @@ public class JdbcUtil<T> {
         }
     }
     // 创建连接
-    static Connection getConnection(){
+    public static Connection getConnection(){
         Connection con = null;
         try {
             con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
@@ -31,6 +31,7 @@ public class JdbcUtil<T> {
         }
         return con;
     }
+
     // 封装通用的增删改方法
     public static int executeUpdate(String sql,Object[] pss){
         int result = 0;
@@ -96,9 +97,7 @@ public class JdbcUtil<T> {
                          */
                         f.setAccessible(true);
                         f.set(t, value);
-                    }catch (Exception ex){
-
-                    }
+                    }catch (Exception ex){}
                 }
                 list.add(t);
             }

@@ -4,6 +4,9 @@ import com.neuedu.test3.Student;
 import com.neuedu.test3.util.JdbcUtil;
 import com.neuedu.test3.web.StudentWeb;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -17,7 +20,9 @@ public class StudentTest {
 //        studentWeb.input();
 
         /**
-         * 反射：获取Class类型的对象
+         * 类在第一次主动使用的时候，会把class加载到内存的方法区中，
+         * 并且在堆区创建一个Class类型的对象，并指向该方法区，
+         * 反射：获取该Class类型的对象
          * 获取该对象的方法
          *   1.类名.class
          *   2.对象名.getClass( )
@@ -53,7 +58,52 @@ public class StudentTest {
             System.out.println(f.getName());
         }*/
 
+        // 自定义的是什么泛型，就返回什么什么泛型
          List<Student> list = JdbcUtil.executeQuery("select id,name,classname,gender from student",Student.class);
-        System.out.println(list);
+//        System.out.println(list);
+
+        /**
+         * 事务
+         */
+        Connection con2 = JdbcUtil.getConnection();
+        PreparedStatement ps2 = null;
+        PreparedStatement ps3 = null;
+        // 如果实现事务管理，就必须不能让每次增删改之后都自动提交
+        try {
+            con2.setAutoCommit(false);  // 设置是否自动提交
+            ps2 = con2.prepareStatement("insert into student (name,classname,gender) values (?,?,?)");
+            ps2.setString(1, "琴");
+            ps2.setString(2, "卓越1班");
+            ps2.setInt(3, 0);
+            ps3 = con2.prepareStatement("insert into student (name,classname,gender) values (?,?,?)");
+            ps3.setString(1, "琪");
+            ps3.setString(2, "卓越1班");
+            ps3.setInt(3, 1);
+
+            int i = ps2.executeUpdate();
+            System.out.println(i);
+//            int a = 100/0;
+            int j = ps3.executeUpdate();
+            System.out.println(j);
+            con2.commit();
+        } catch (SQLException e) {
+            try {
+                con2.rollback();  // 回滚
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps3 != null)
+                    ps3.close();
+                if (ps2 != null)
+                    ps2.close();
+                if (con2 != null)
+                    con2.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
