@@ -52,8 +52,8 @@ public class Test12 {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-*/
+        }*/
+
         /**
          * 字节输入流 InputStream
          */
@@ -106,12 +106,10 @@ public class Test12 {
             e.printStackTrace();
         } finally {
             try {
-                if (br != null) {
+                if (br != null)
                     br.close();
-                }
-                if (reader != null) {
+                if (reader != null)
                     reader.close();
-                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -120,7 +118,7 @@ public class Test12 {
         /**
          * 字符输出流 Writer
          */
-        /*Writer writer = null;
+       /* Writer writer = null;
         try {
             writer = new FileWriter(file, true);
             writer.write("ruvbuijdkduiefui");

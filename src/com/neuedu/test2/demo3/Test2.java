@@ -7,7 +7,7 @@ import java.io.*;
  * 2.将序列化后的Java对象读取出来 ObjectInputStream
  *
  * 在类上实现序列化接口（java.io.Serializable）即可让对象成为可序列化对象,
- * 同时类上必须有一个序列化 UID（区分两个类是不是同一个对象）
+ * 同时类上必须有一个序列化 UID（区分两个类是不是同一个对象）final long serialVersionUID = 1L;
  *
  * @author ldamei
  * @date 2020/2/12 22:18
@@ -19,7 +19,6 @@ public class Test2 {
         student.setId(20);
         student.setAge(22);
         student.setGrade("卓越1班");
-
         File file = new File("d:/student");
 
         // 1 把一个Java对象存到硬盘里
@@ -69,6 +68,4 @@ public class Test2 {
             }
         }
     }
-
-
 }
